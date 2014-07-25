@@ -1,0 +1,38 @@
+{
+  "name": "diet-ect",
+  "version": "0.1.0",
+  "description": "ECT based diet plugin for rendering Dynamic HTML files",
+  "homepage": "http://github.com/adamhalasz/diet-ect/",
+  "keywords": [
+    "ect",
+    "html",
+    "parse",
+    "render",
+    "plugin",
+    "diet plugin",
+    "diet",
+    "dietjs",
+    "diet.js"
+  ],
+  "bugs": {
+    "url": "http://github.com/adamhalasz/diet-ect/issues",
+    "email": "mail@adamhalasz.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adamhalasz/diet-ect.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Halász Ádám",
+    "email": "mail@adamhalasz.com",
+    "url": "http://adamhalasz.com/"
+  },
+  "dependencies": {
+    "ect": ">=0.5.9"
+  },
+  "main": "index.js",
+  "engines": {
+    "node": ">=0.8.21"
+  }
+}
