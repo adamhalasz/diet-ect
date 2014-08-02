@@ -37,7 +37,7 @@ app.get('/', function($){
 });
 ```
 ```html
-// your_app/static/index.html
+<!-- your_app/static/index.html -->
 <!DOCTYPE html>
 <html>
     <head>
