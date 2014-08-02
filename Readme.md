@@ -52,7 +52,7 @@ app.get('/', function($){
 ```
 
 ## **Template Variables**
-You can access **anything defined in the `$` signal** in your templates:
+You can access **anything defined in the `$` signal** from your templates:
 
 ```js
 $.query 	// in template {{ this.query }}
