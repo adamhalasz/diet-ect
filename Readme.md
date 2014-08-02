@@ -65,7 +65,7 @@ $.data 		// in template {{ this }} data is a special variable
 ## **The $.data variable**
 - The `$.data` object has a priority and will overwrite the variables from the signal. 
 - The `$.data` variable is directly accessible like `{{-this.myVar}}` instead of `{{-this.data.myVar}}`.
-- The `$.data` object is also used by the `$.json()` response. It's a good practice to use it for easier API building.
+- The `$.data` object is also used by the `$.json()` response making APIs easier to build.
 
 ## **Custom file**
 By default `$.html()` will serve an `index.html` file relativ to the `root` config. 
