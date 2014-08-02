@@ -13,6 +13,8 @@ npm install diet-ect
 ```
 
 ## **Example Usage**
+
+**/your_app/index.js**
 ```js
 // Require Diet
 require('diet');
@@ -36,8 +38,8 @@ app.get('/', function($){
    $.html(); 
 });
 ```
+**/your_app/static/index.html**
 ```html
-<!-- your_app/static/index.html -->
 <!DOCTYPE html>
 <html>
     <head>
