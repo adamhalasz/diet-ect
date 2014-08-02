@@ -87,7 +87,7 @@ app.plugin('diet-ect', {
 	gzip: true
 });
 ```
-It's a good idea to use an `alias` like `html` so you can call it like `$.html()` instead of `$['diet-ect']()`
+It's a good idea to use an `alias` like `html` so the reference in your routes is `$.html()` instead of `$['diet-ect']()`
 
 ## **License**
 
