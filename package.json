@@ -1,7 +1,7 @@
 {
   "name": "diet-ect",
-  "version": "0.1.0",
-  "description": "ECT based diet plugin for rendering Dynamic HTML files",
+  "version": "0.1.1",
+  "description": "HTML template engine plugin for diet based on ECT.js",
   "homepage": "http://github.com/adamhalasz/diet-ect/",
   "keywords": [
     "ect",
