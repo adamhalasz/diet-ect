@@ -52,13 +52,20 @@ app.get('/', function($){
 ```
 
 ## **Template Variables**
-Anything in the signal is also passed to your templates, so you can access `$.query`, `$.body`, `$.params`, `$.url` and all of them.
+You can access anything defined in the `$` signal in your templates:
 
-Anything that you pass to the `$.data` object will have a priority and will overwrite the variables from the signal. 
+```js
+$.query 	// in template {{ this.query }}
+$.body 		// in template {{ this.body }}
+$.params 	// in template {{ this.params }}
+$.url 		// in template {{ this.query}}
+$.data 		// in template {{ this }} data is a special variable
+```
 
-The `$.data` variable is directly accessible within the templates so you don't need to call them like `{{-this.data.myVar}}`, instead just `{{-this.myVar}}`.
-
-The `$.data` object is also used by the `$.json()` response. It's a good practice to use it for API purposes too.
+## **The $.data variable**
+- The `$.data` object has a priority and will overwrite the variables from the signal. 
+- The `$.data` variable is directly accessible like `{{-this.myVar}}` instead of `{{-this.data.myVar}}`.
+- The `$.data` object is also used by the `$.json()` response. It's a good practice to use it for API purposes too.
 
 ## **Custom file**
 By default `$.html()` will serve an `index.html` file relativ to the `root` config. You can change the file when you call `$.html()` by passing in an argument with a different path.
