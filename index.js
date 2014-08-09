@@ -26,8 +26,6 @@ module.exports.global = function($, options){
 		var context = Object.merge(Object.clone($), $.data);
 		var html = renderer.render(path, context);
 		$.header('content-type', 'text/html');
-		
-		console.log($.end.toString());
 		$.end(html);
 	});
 }
