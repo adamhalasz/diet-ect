@@ -1,7 +1,7 @@
 {
   "name": "diet-ect",
-  "version": "0.1.1",
-  "description": "HTML template engine plugin for diet based on ECT.js",
+  "version": "0.2.0",
+  "description": "ECT based diet plugin for rendering Dynamic HTML files",
   "homepage": "http://github.com/adamhalasz/diet-ect/",
   "keywords": [
     "ect",
@@ -29,7 +29,8 @@
     "url": "http://adamhalasz.com/"
   },
   "dependencies": {
-    "ect": ">=0.5.9"
+    "ect": ">=0.5.9",
+    "sugar": ">=1.4.1"
   },
   "main": "index.js",
   "engines": {

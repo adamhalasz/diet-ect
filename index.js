@@ -1,11 +1,14 @@
 // ECT based diet plugin for rendering Dynamic HTML files
+
+// Dependencies
+require('sugar')
 var fs = require('fs');
-var ECT = require('ect');
+var ect = require('ect');
 var renderer; 
 
-// global onload
+// Setup when loaded
 module.exports.onload = function($, options){
-	renderer = ECT(merge({ 
+	renderer = ect(Object.merge({ 
 		root : $.path+'/static/', 
 		ext: '.html', 
 		open: '{{', close: '}}',
@@ -16,11 +19,11 @@ module.exports.onload = function($, options){
 	$.return();
 }
 
-// local for routes
+// Create Route Global
 module.exports.global = function($, options){
 	$.return(function(pathname){
 		var path = pathname ? pathname : 'index.html' ;
-		var context = merge($, $.data);
+		var context = Object.merge($, $.data);
 		var html = renderer.render(path, context);
 		$.header('content-type', 'text/html');
 		$.end(html);
