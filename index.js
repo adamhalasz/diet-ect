@@ -23,9 +23,11 @@ module.exports.onload = function($, options){
 module.exports.global = function($, options){
 	$.return(function(pathname){
 		var path = pathname ? pathname : 'index.html' ;
-		var context = Object.merge($, $.data);
+		var context = Object.merge(Object.clone($), $.data);
 		var html = renderer.render(path, context);
 		$.header('content-type', 'text/html');
+		
+		console.log($.end.toString());
 		$.end(html);
 	});
 }
