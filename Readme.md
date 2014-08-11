@@ -19,11 +19,17 @@ npm install diet-ect
 // Require Diet
 require('diet');
 
+// Create App
+var app = new App();
+
+// Configure Domain
+app.domain('http://localhost:8000/');
+
 // Plugin ECT
 app.plugin('diet-ect', { alias: 'html' }) // alias is recommended
 
 // Start HTTP Server
-app.start('http://localhost:8000/');
+app.start();
 
 // Listen on GET /
 // ECT is a global plugin so you'll have access to it from every route
