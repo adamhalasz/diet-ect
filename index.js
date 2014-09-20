@@ -7,7 +7,7 @@ var ect = require('ect');
 var renderer; 
 
 // Setup when loaded
-module.exports.onload = function($, options){
+exports.onload = function($, options){
 	renderer = ect(Object.merge({ 
 		root : $.path+'/static/', 
 		ext: '.html', 
@@ -20,7 +20,7 @@ module.exports.onload = function($, options){
 }
 
 // Create Route Global
-module.exports.global = function($, options){
+exports.global = function($, options){
 	$.return(function(pathname){
 		var path = pathname ? pathname : 'index.html' ;
 		var context = Object.merge(Object.clone($), $.data);
@@ -29,4 +29,6 @@ module.exports.global = function($, options){
 		$.end(html);
 	});
 }
+
+module.parent.return();
 

@@ -14,37 +14,39 @@ npm install diet-ect
 
 ## **Example Usage**
 
-**/your_app/index.js**
+**~/yourApp/index.js**
 ```js
 // Require Diet
-require('diet');
+require('diet')
 
 // Create App
-var app = new App();
+var app = new App()
 
 // Configure Domain
-app.domain('http://localhost:8000/');
+app.domain('http://localhost:8000/')
 
 // Plugin ECT
 app.plugin('diet-ect', { alias: 'html' }) // alias is recommended
 
 // Start HTTP Server
-app.start();
+app.start()
 
 // Listen on GET /
 // ECT is a global plugin so you'll have access to it from every route
 // We can call it with `$.html()` as we are using the `alias` config
 app.get('/', function($){
    // Set a template variable
-   $.data.engine = 'The Wonderful ECT.js';
+   $.data.engine = 'The Wonderful ECT.js'
    
    // Now serve the html file 
    // by default: /your_app/static/index.html 
    // use the `root` config to change this
-   $.html(); 
-});
+   $.html() 
+})
 ```
-**/your_app/static/index.html**
+
+**~/yourApp/static/index.html**
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -75,9 +77,11 @@ $.data 		// in template {{ this }} data is a special variable
 
 ## **Custom file**
 By default `$.html()` will serve an `index.html` file relativ to the `root` config. 
+
 ```js
-$.html('yourFile.html'); // will serve /your_app/static/yourFile.html
+$.html('yourFile.html') // will serve /your_app/static/yourFile.html
 ```
+
 You can change the file when you call `$.html()` by passing in an argument with a different path.
 
 ## **Config**
@@ -85,13 +89,13 @@ You can use any config that [ECT][2] already has. These are the defaults with `d
 
 ```js
 app.plugin('diet-ect', {
-	root : $.path+'/static/', 
+	root : app.path+'/static/', 
 	ext: '.html', 
 	open: '{{', close: '}}',
 	cache: true,
 	watch: true,
 	gzip: true
-});
+})
 ```
 It's a good idea to use an `alias` like `html` so the reference in your routes is `$.html()` instead of `$['diet-ect']()`
 
