@@ -4,23 +4,20 @@
 require('sugar')
 var fs = require('fs');
 var ect = require('ect');
-var renderer; 
+var app = module.parent.app;
+var options = module.parent.options;
 
-// Setup when loaded
-exports.onload = function($, options){
-	renderer = ect(Object.merge({ 
-		root : $.path+'/static/', 
-		ext: '.html', 
-		open: '{{', close: '}}',
-		cache: true,
-		watch: true,
-		gzip: true,
-	}, options));
-	$.return();
-}
+var renderer = ect(Object.merge({ 
+	root : app.path+'/static/', 
+	ext: '.html', 
+	open: '{{', close: '}}',
+	cache: true,
+	watch: true,
+	gzip: true,
+}, options));
 
 // Create Route Global
-exports.global = function($, options){
+exports.global = function($){
 	$.return(function(pathname){
 		var path = pathname ? pathname : 'index.html' ;
 		var context = Object.merge(Object.clone($), $.data);
@@ -31,4 +28,3 @@ exports.global = function($, options){
 }
 
 module.parent.return();
-
