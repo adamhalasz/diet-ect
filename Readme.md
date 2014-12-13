@@ -16,27 +16,24 @@ npm install diet-ect
 
 **~/yourApp/index.js**
 ```js
-// Require Diet
-require('diet')
 
-// Create App
-var app = new App()
+// Initialize Server
+require('diet')    // Require Diet
+var app = server() // Create App
+app.listen(8000)   // Configure Domain
 
-// Configure Domain
-app.domain('http://localhost:8000/')
+// Require ECT
+var ect = require('diet-ect')({ path: app.path+'/static' })
 
-// Plugin ECT
-app.plugin('diet-ect', { alias: 'html' }) // alias is recommended
-
-// Start HTTP Server
-app.start()
+// Load ECT as a global header
+app.header(ect)
 
 // Listen on GET /
-// ECT is a global plugin so you'll have access to it from every route
-// We can call it with `$.html()` as we are using the `alias` config
+// ECT is a global header so you can access it 
+// from every route with the `$.html()` method
 app.get('/', function($){
    // Set a template variable
-   $.data.engine = 'The Wonderful ECT.js'
+   $.data.myVar = 'ect'
    
    // Now serve the html file 
    // by default: /your_app/static/index.html 
@@ -54,13 +51,13 @@ app.get('/', function($){
         <title>Hello World!</title>
     </head>
     <body>
-        <h1>Hello World with {{-this.engine}}</h1>
+        <h1>Hello World at {{-this.myVar}}</h1>
     </body>
 </html>
 ```
 
 ## **Template Variables**
-You can access **anything defined in the `$` signal** from your templates:
+You can access **anything defined in the `$` signal** from your templates including:
 
 ```js
 $.query 	// in template {{ this.query }}
@@ -88,8 +85,8 @@ You can change the file when you call `$.html()` by passing in an argument with 
 You can use any config that [ECT][2] already has. These are the defaults with `diet-ect`:
 
 ```js
-app.plugin('diet-ect', {
-	root : app.path+'/static/', 
+require('diet-ect')({
+	root : '/', 
 	ext: '.html', 
 	open: '{{', close: '}}',
 	cache: true,
@@ -97,7 +94,6 @@ app.plugin('diet-ect', {
 	gzip: true
 })
 ```
-It's a good idea to use an `alias` like `html` so the reference in your routes is `$.html()` instead of `$['diet-ect']()`
 
 ## **License**
 

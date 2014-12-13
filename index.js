@@ -1,30 +1,31 @@
 // ECT based diet plugin for rendering Dynamic HTML files
 
 // Dependencies
-require('sugar')
-var fs = require('fs');
-var ect = require('ect');
-var app = module.parent.app;
-var options = module.parent.options;
+var fs = require('fs')
+var ect = require('ect')
+var merge = require('merge')
+var clone = require('clone')
 
-var renderer = ect(Object.merge({ 
-	root : app.path+'/static/', 
-	ext: '.html', 
-	open: '{{', close: '}}',
-	cache: true,
-	watch: true,
-	gzip: true,
-}, options));
-
-// Create Route Global
-exports.global = function($){
-	$.return(function(pathname){
-		var path = pathname ? pathname : 'index.html' ;
-		var context = Object.merge(Object.clone($), $.data);
-		var html = renderer.render(path, context);
-		$.header('content-type', 'text/html');
-		$.end(html);
-	});
+module.exports = function(options){
+	
+	var options = options || {}
+	var renderer = ect(merge({ 
+		root : options.path, 
+		ext: '.html', 
+		open: '{{', close: '}}',
+		cache: true,
+		watch: true,
+		gzip: true,
+	}, options))
+	
+	return function($){
+		$.html = function(pathname){
+			$.header('Content-Type', 'text/html; charset=UTF-8')
+			var path = pathname ? pathname : 'index.html' 
+			var context = merge(clone($, false, 1), $.data)
+			var html = renderer.render(path, context)
+			$.end(html)
+		}
+		$.return()
+	}
 }
-
-module.parent.return();
