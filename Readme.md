@@ -18,7 +18,7 @@ npm install diet-ect
 ```js
 
 // Initialize Server
-require('diet')    // Require Diet
+var server = require('diet')    // Require Diet
 var app = server() // Create App
 app.listen(8000)   // Configure Domain
 
