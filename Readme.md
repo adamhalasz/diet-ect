@@ -236,9 +236,9 @@ Please note if you would like to iterate over just the keys that are defined on 
 The data:
 ```js
 $.data.grades = [
-	{ student: 'Arnold', value: 'A+'}, 
-	{ student: 'Billy', value: 'B+'}, 
-	{ student: 'Carol', value: 'C-}
+	{ student: 'Arnold', value: 'A+' }, 
+	{ student: 'Billy', value: 'B+' }, 
+	{ student: 'Carol', value: 'C-' }
 ];
 ```
 The template:
