@@ -19,12 +19,17 @@ module.exports = function(options){
 	}, options))
 	
 	return function($){
-		$.html = function(pathname){
-			$.header('Content-Type', 'text/html; charset=UTF-8')
-			var path = pathname ? pathname : 'index.html' 
-			var context = merge(clone($, false, 1), $.data)
-			var html = renderer.render(path, context)
-			$.end(html)
+		$.htmlModule = function(pathname){
+		    if(!pathname || (pathname && pathname.indexOf(/\n|\r/) != -1)){
+    			var path = pathname ? pathname : 'index.html' 
+    			var context = merge(clone($, false, 1), $.data)
+    			var html = renderer.render(path, context)
+    			$.response.end(html)
+			} else if (pathname) {
+			    $.response.end(pathname)
+			}
+			
+			$.nextRoute() // call next route
 		}
 		$.return()
 	}
