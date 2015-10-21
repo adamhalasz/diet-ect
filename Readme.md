@@ -1,7 +1,7 @@
 # **diet-ect**
 HTML template engine module for [diet](http://dietjs.com) based on [ect][1]. The Fastest JavaScript template engine with embedded CoffeeScript syntax.
 
-```html
+```js
 {{ if this.page is 'home' :}}
 	<h1>Users:</h1>
 	<ul>
@@ -117,11 +117,11 @@ require('diet-ect')({
 ### **Printing**
 
 #### **Escaped Output**
-```html
+```js
 <h1>{{- this.title }}</h1>
 ```
 #### **Unescaped Output**
-```html
+```js
 <code>{{= this.source }}</code>
 ```
 
@@ -158,28 +158,30 @@ require('diet-ect')({
 
 Let's say this is our project structure:
 
+```js
 /views
 ....../html
 ............/header.html
 ............/home.html
 ............/about.html
+```
 
 And we would like to resue `header.html` in both `home.html` and `about.html`.
 
 This is `header.html`:
-```
-<header>
+```js
+<section>
 	<a id="logo">A Wonderful Service</a>
-</header>
+</section>
 ```
 And this is `home.html`:
-```
+```js
 {{ include 'header' }}
 <h1>Welcome to my homepage</h1>
 ...
 ```
 And this is `about.html`:
-```
+```js
 {{ include 'header' }}
 <h1>About Me</h1>
 ...
@@ -289,7 +291,7 @@ The output:
 Please note you cannot access template variables that are created locally within the template unless it is defined as a property of the global context object `this`.
 
 This **IS** working:
-```
+```html
 <!-- define GLOBAL template variable -->
 {{this.preText = 'Learn more about '}}
 
@@ -302,7 +304,7 @@ This **IS** working:
 {{-text 'hockey'}}
 ```
 This **IS** **NOT** working:
-```
+```html
 <!-- define LOCAL template variable -->
 {{preText = 'Learn more about: '}}
 
